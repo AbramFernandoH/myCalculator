@@ -1,0 +1,22 @@
+:root{
+  --padding-container: 3% 5%; 
+}
+
+body{
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom left, grey, white);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header{
+  padding: var(--padding-container);
+  text-align: center;
+}
+
+main{
+  padding: var(--padding-container);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
