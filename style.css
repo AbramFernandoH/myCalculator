@@ -22,7 +22,7 @@ main{
   align-items: center;
 }
 
-textarea#calcTA{
+input#calcTA{
   width: 790px;
   height: 150px;
 }
