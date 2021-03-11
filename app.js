@@ -1,15 +1,17 @@
-const calcScreen = document.querySelector('#calcTA');
-
+const calcScreen = document.querySelector('#calcScreen');
+const clearBtn = document.querySelector('.clear');
 const btnNum = document.querySelectorAll('.btnNum');
+const backspace = document.querySelector('.backspace');
 
-for(let i = 0; i < btnNum.length; i++){
-  btnNum[i].addEventListener('click', function(){
-    let numVal = btnNum[i].innerText;
-    calcScreen.value += numVal;
+for (let btn of btnNum) {
+  btn.addEventListener('click', function(){
+    calcScreen.value += btn.innerText;
   })
 }
 
-const clearBtn = document.querySelector('.clear');
+backspace.addEventListener('click', function(){
+  calcScreen.value = (calcScreen.value).slice(0, -1);
+})
 
 clearBtn.addEventListener('click', function(){
   calcScreen.value = '';
