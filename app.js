@@ -1,20 +1,29 @@
 const calcScreen = document.querySelector('#calcScreen');
+const calcOutput = document.querySelector('#calcOutput');
 const clearBtn = document.querySelector('.clear');
 const btnNum = document.querySelectorAll('.btnNum');
 const backspace = document.querySelector('.backspace');
+const btnOperator = document.querySelectorAll('.btnOperator');
+const btnCalculate = document.querySelector('.equal');
+const btnDecimal = document.querySelector('.decimal');
 
 for (let btn of btnNum) {
   btn.addEventListener('click', function(){
-    calcScreen.value += btn.innerText;
+    calcOutput.value += btn.innerText;
   })
 }
 
+btnDecimal.addEventListener('click', function(){
+  calcOutput.value += btnDecimal.innerText;
+})
+
 backspace.addEventListener('click', function(){
-  calcScreen.value = (calcScreen.value).slice(0, -1);
+  calcOutput.value = (calcOutput.value).slice(0, -1);
 })
 
 clearBtn.addEventListener('click', function(){
   calcScreen.value = '';
+  calcOutput.value = '';
 })
 
 document.addEventListener('keydown', function(e){
@@ -68,3 +77,35 @@ document.addEventListener('keydown', function(e){
       break;
   }
 })
+
+for (let operator of btnOperator) {
+  operator.addEventListener('click', function(){
+    calcScreen.value += (calcOutput.value += this.innerText);
+    calcOutput.value = '';
+    let operatorAction = operator.dataset.action;
+    if(operatorAction === 'multiply'){
+      btnCalculate.addEventListener('click', function(){
+        let nums = calcScreen.value += calcOutput.value;
+        let numbers = nums.split('X');
+        calcScreen.value = '';
+        let multiply = parseFloat(numbers[0]) * parseFloat(numbers[1]);
+        calcOutput.value = '';
+        calcOutput.value += multiply;
+      })
+    } else if(operatorAction === 'divide'){
+      btnCalculate.addEventListener('click', function(){
+        let nums = calcScreen.value += calcOutput.value;
+        let numbers = nums.split('÷');
+        calcScreen.value = '';
+        let divide = parseFloat(numbers[0]) / parseFloat(numbers[1]);
+        calcOutput.value = '';
+        calcOutput.value += divide;
+      })
+    } else if(operatorAction === 'add'){
+
+    } else if(operatorAction === 'subtract'){
+
+    }
+  })
+}
+
